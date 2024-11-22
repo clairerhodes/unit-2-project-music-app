@@ -1,0 +1,27 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Welcome to the app!</h1>
+    <button><a href="/auth/sign-up">Sign Up</a></button> <!-- add link to sign up page -->
+    <button><a href="/auth/sign-in">Login</a></button> <!-- add link to log in page -->
+    <button><a href="/vip">Get into the VIP only lounge for users!</a></button>
+    <% if (user) { %>
+        <h1>Welcome to the app, <%= user.username %>!</h1>
+        <p>
+            <a href="/auth/sign-out">Sign Out</a> <!-- only show if user is signed in -->
+        </p>
+        <% } else { %>
+        <h1>Welcome to the app, guest.</h1>
+        <p>
+          <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
+        </p>
+        <% } %>
+  </body>
+</html>
