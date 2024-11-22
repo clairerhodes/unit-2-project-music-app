@@ -12,20 +12,18 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require('express-session'); // perform actions related to user's route session
-// const MongoStore = require("connect-mongo"); // store session data in MongoDB so you don't have to sign in everytime the server restarts!!
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js"); //
 
+// import Song model
+const Song = require("./models/song.js");
 
-// integrate session management into app, configure middleware to securely manage user  sessions w/ secret key
+// integrate session management into app, configure middleware to securely manage user sessions w/ secret key
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
       resave: false, // dont resave sessions that havent changed
       saveUninitialized: true, // store new uninitialized sessions
-    //   store: MongoStore.create({
-    //     mongoUrl: process.env.MONGO_URI,
-    //     }),
     })
   );
 
@@ -49,6 +47,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
+
+
+
+
 
 // ============================================ ROUTES ============================================ // 
 
