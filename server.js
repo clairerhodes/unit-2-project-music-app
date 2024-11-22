@@ -32,7 +32,7 @@ app.use(
 app.use(passUserToView); // add custom middleware after session middleware
 
 // Set the port from environment variable or default to 3000
-const port = process.env.PORT ? process.env.PORT : "3004";
+const port = process.env.PORT ? process.env.PORT : "3005";
 
 // import authController so we can use router object (after port const)
 const authController = require("./controllers/auth.js");

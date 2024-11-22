@@ -34,13 +34,9 @@ router.post("/sign-up", async (req, res) => {
     // allow user to sign in immediately upon signing up
     req.session.user = {
         username: user.username,
-      };
-      
-      req.session.save(() => {
-        res.redirect("/");
-      });
-      
-    res.send(`Your account has been created ${user.username}!`);
+    };
+    // res.send(`Your account has been created ${user.username}!`);
+    res.redirect("/");
 });
 
 
@@ -68,9 +64,6 @@ router.post("/sign-in", async (req,res) => {
         username: userInDatabase.username,
         _id: userInDatabase._id,
     };
-    // req.session.save(() => { // modify controller so landing page has time to update
-    //     res.redirect("/");
-    //   });
     // res.send("Sign in request received!");
     res.redirect("/"); // take us back to our landing page
 });
